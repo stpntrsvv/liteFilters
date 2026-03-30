@@ -29,13 +29,11 @@
 ## Описание классов
 Все классы находятся в пространстве имен `lf`. Каждый из них имеет метод `float update(float input)`: принимает данные, возвращает отфильтрованное значение.
 
-### EMAFilter
 ```cpp
 lf::EMAFilter filter(float alpha); // Конструктор. Альфа задается от 0 до 1. Чем меньше, тем сильнее сглаживание.
 float update(float input);
 ```
 
-### KalmanFilter
 ```cpp
 lf::KalmanFilter filter(float q, float r); // Конструктор. q (шум процесса), r (шум измерения).
 void setParameters(float q, float r);      // Задание параметров фильтра.
@@ -43,13 +41,11 @@ float update(float measurement);
 
 ```
 
-### MedianFilter3
 ```cpp
 lf::MedianFilter3 filter;    // Конструктор. Окно усреднения в 3 элемента.
 float update(float input); // Возвращает медиану массива из 3-х значений
 ```
 
-### MovingAverageFilter
 ```cpp
 lf::MovingAverageFilter<N> filter; // Конструктор. N - размер окна (uint8_t).
 float update(float input);         // Возвращает среднее арифметическое окна.
@@ -106,12 +102,4 @@ void loop() {
 ### Способ 2: Напрямую в проект
 1. Скопировать файл `include/liteFilters.h` в папку со своим скетчем/проектом.
 2. В коде использовать: `#include "liteFilters.h"`.
-
-## Баги и обратная связь
-
-Если вы нашли баг или у вас есть предложения по улучшению, пожалуйста, создавайте **Issue** в этом репозитории. Библиотека открыта для доработок и ваших **Pull Request**'ов.
-
-## Лицензия
-
-Библиотека распространяется под лицензией MIT. Подробнее см. в файле [LICENSE](LICENSE).
 ```
